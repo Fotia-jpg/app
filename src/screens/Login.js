@@ -10,12 +10,14 @@ class Login extends React.Component {
       <View
         style={{
           flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
         }}>
         <Button
-          title="go to Register"
+          title="Register"
           onPress={() => this.props.navigation.navigate('Register')}
+        />
+        <Button
+          title="Scan"
+          onPress={() => this.props.navigation.navigate('Scan')}
         />
       </View>
     );

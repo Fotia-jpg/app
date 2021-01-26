@@ -10,12 +10,10 @@ class Register extends React.Component {
       <View
         style={{
           flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
         }}>
         <Button
-          title="Go to Login screen"
-          onPress={() => this.props.navigation.navigate('Login')}
+          title="Scan"
+          onPress={() => this.props.navigation.navigate('Scan')}
         />
       </View>
     );
