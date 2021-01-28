@@ -5,6 +5,7 @@ import {NativeModules} from 'react-native';
 class Scan extends React.Component {
   static navigationOptions = {
     title: 'Scan',
+    headerShown: false,
   };
   render() {
     return (

@@ -4,7 +4,8 @@ import {NativeModules} from 'react-native';
 
 class Preview extends React.Component {
   static navigationOptions = {
-    title: 'Scan',
+    title: 'Preview',
+    headerShown: false,
   };
   render() {
     return (
