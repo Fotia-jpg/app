@@ -1,7 +1,5 @@
 import React from 'react';
-import {View, TextInput, TouchableOpacity} from 'react-native';
-
-import {Button, Card} from 'react-native-material-design';
+import {View, TextInput, TouchableOpacity, Button} from 'react-native';
 
 class Login extends React.Component {
   state = {
@@ -32,14 +30,8 @@ class Login extends React.Component {
           />
         </View>
 
-        <Button variant={'contained'} color={'secondary'}>
-          TEST
-        </Button>
-
         <TouchableOpacity>
           <Button
-            variant="contained"
-            color="secondary"
             onPress={() => this.props.navigation.navigate('Scan')}
             title="Login"
           />
