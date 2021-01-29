@@ -1,5 +1,7 @@
 import React from 'react';
-import {Button, View, Text, TextInput} from 'react-native';
+import {Button, View, Text, TextInput, Image, StyleSheet} from 'react-native';
+import {Input} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 class Register extends React.Component {
   static navigationOptions = {
@@ -8,32 +10,63 @@ class Register extends React.Component {
   };
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-        }}>
-        <View>
-          <TextInput
-            placeholder="Email..."
-            placeholderTextColor="#003f5c"
-            onChangeText={(text) => this.setState({email: text})}
-          />
-        </View>
+      <View style={style.container}>
+        <View style={style.inputContainer}>
+          <View style={style.input}>
+            <Input
+              placeholder="email"
+              leftIcon={<Icon name="user" size={20} color="black" />}
+            />
+          </View>
 
-        <View>
-          <TextInput
-            secureTextEntry
-            placeholder="Password..."
-            placeholderTextColor="#003f5c"
-            onChangeText={(text) => this.setState({password: text})}
-          />
+          <View style={style.input}>
+            <Input
+              placeholder="password"
+              leftIcon={<Icon name="lock" size={20} color="black" />}
+            />
+          </View>
+
+          <View style={style.input}>
+            <Input
+              placeholder="confirm password"
+              leftIcon={<Icon name="lock" size={20} color="black" />}
+            />
+          </View>
         </View>
-        <Button
-          title="Login"
-          onPress={() => this.props.navigation.navigate('Scan')}
-        />
+        <View style={style.buttonContainer}>
+          <View style={style.button}>
+            <Button
+              onPress={() => this.props.navigation.navigate('Scan')}
+              title="        Login        "
+              type="solid"
+              raised
+            />
+          </View>
+        </View>
       </View>
     );
   }
 }
+
+const style = StyleSheet.create({
+  container: {flex: 1},
+
+  inputContainer: {marginTop: 35},
+
+  buttonContainer: {},
+
+  mainLogo: {
+    height: 150,
+    width: 150,
+    marginTop: 5,
+  },
+
+  input: {margin: 10},
+
+  button: {
+    marginTop: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 export default Register;
