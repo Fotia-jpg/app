@@ -1,7 +1,6 @@
 import React from 'react';
-import {Button, View, Text, Image, Alert, TouchableOpacity} from 'react-native';
-//import {TouchableOpacity} from 'react-native-gesture-handler';
-
+import {View, Share, Image, Alert, TouchableOpacity} from 'react-native';
+//import SocialMediaShare from '../SocialMediaShare';
 import style from '../styles/style';
 
 class Preview extends React.Component {
@@ -10,6 +9,24 @@ class Preview extends React.Component {
     headerShown: false,
   };
   render() {
+    const onShare = async () => {
+      try {
+        const result = await Share.share({
+          message: 'PHOTOBOOTH QT',
+        });
+        if (result.action === Share.sharedAction) {
+          if (result.activityType) {
+            // shared with activity type of result.activityType
+          } else {
+            // shared
+          }
+        } else if (result.action === Share.dismissedAction) {
+          // dismissed
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    };
     return (
       <View>
         <View style={style.dwlContainer}>
@@ -25,10 +42,7 @@ class Preview extends React.Component {
         </View>
 
         <View style={style.shareContainer}>
-          <TouchableOpacity
-            onPress={() => {
-              Alert.alert('click', 'click');
-            }}>
+          <TouchableOpacity onPress={onShare}>
             <Image
               style={style.shareIcon}
               source={require('../assets/share.png')}
