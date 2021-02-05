@@ -1,6 +1,6 @@
 import React from 'react';
-import {Button, View, Text, StyleSheet} from 'react-native';
-import {NativeModules} from 'react-native';
+import {Button, View} from 'react-native';
+import style from '../styles/style';
 
 class Scan extends React.Component {
   static navigationOptions = {
@@ -10,7 +10,7 @@ class Scan extends React.Component {
   render() {
     return (
       <View style={style.container}>
-        <View style={style.scanB}>
+        <View style={style.button}>
           <Button
             title="SCAN CODE"
             onPress={() => this.props.navigation.navigate('Preview')}
@@ -20,9 +20,4 @@ class Scan extends React.Component {
     );
   }
 }
-
-const style = StyleSheet.create({
-  container: {flex: 1},
-  scanB: {margin: 150, justifyContent: 'center', alignItems: 'center'},
-});
 export default Scan;
