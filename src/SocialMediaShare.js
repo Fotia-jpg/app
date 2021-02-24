@@ -12,8 +12,7 @@ var ReactNativeSocialShare = React.createClass({
         text: 'Global democratized marketplace for art',
         link: 'https://artboost.com/',
         imagelink: 'https://artboost.com/apple-touch-icon-144x144.png',
-        //or use image
-        image: 'artboost-icon',
+        image: 'camera.png',
       },
       (results) => {
         console.log(results);

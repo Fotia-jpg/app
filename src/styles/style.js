@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import React from 'react';
 
 export default StyleSheet.create({
-  container: {flex: 1},
+  container: {},
 
   mainLogoContainer: {
     justifyContent: 'center',
@@ -15,15 +15,22 @@ export default StyleSheet.create({
 
   buttonContainer: {},
 
-  dwlContainer: {
-    zIndex: 1,
-    paddingLeft: 290,
+  clickContainer: {
+    width: 400,
+    height: 700,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
   },
 
-  shareContainer: {
+  dwlContainer: {width: 100, height: 100},
+
+  shareContainer: {width: 100, height: 100},
+
+  previewContainer: {
     zIndex: 1,
-    paddingLeft: 290,
-    paddingTop: 500,
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
 
   mainLogo: {
@@ -50,5 +57,10 @@ export default StyleSheet.create({
     height: 50,
     width: 50,
     margin: 25,
+  },
+
+  previewImg: {
+    height: 350,
+    width: 350,
   },
 });
