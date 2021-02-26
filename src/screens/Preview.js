@@ -3,36 +3,27 @@ import {View, Image, Alert, TouchableOpacity} from 'react-native';
 import Share from 'react-native-share';
 import style from '../styles/style';
 
+import files from '../assets/base64Files';
+
 class Preview extends React.Component {
   static navigationOptions = {
     title: 'Preview',
     headerShown: false,
   };
   render() {
-    // const onShare = async () => {
-    //   try {
-    //     const result = await Share.share({
-    //       message: 'PHOTOBOOTH QT',
-    //     });
-    //     if (result.action === Share.sharedAction) {
-    //       if (result.activityType) {
-    //         // shared with activity type of result.activityType
-    //       } else {
-    //         // shared
-    //       }
-    //     } else if (result.action === Share.dismissedAction) {
-    //       // dismissed
-    //     }
-    //   } catch (error) {
-    //     alert(error.message);
-    //   }
-    // };
+    const CustomShare = async () => {
+      const shareOptions = {
+        message: 'placeholder message',
+        url: files.image,
+      };
 
-    const shareOptions = {
-      massage: 'test',
-      title: 'test1',
-      url: 'file://../assets/placeholder.jpg',
-      excludedActivityTypes: '',
+      try {
+        const ShareResponse = await Share.open(shareOptions);
+        //log la plateforme de partage utilisée par l'utilisateur
+        console.log(JSON.stringify(ShareResponse));
+      } catch (error) {
+        console.log('Error');
+      }
     };
 
     return (
@@ -60,14 +51,7 @@ class Preview extends React.Component {
           </View>
 
           <View style={style.shareContainer}>
-            <TouchableOpacity
-              onPress={Share.open(shareOptions)
-                .then((res) => {
-                  console.log(res);
-                })
-                .catch((err) => {
-                  err && console.log(err);
-                })}>
+            <TouchableOpacity onPress={CustomShare}>
               <Image
                 style={style.shareIcon}
                 source={require('../assets/share.png')}
