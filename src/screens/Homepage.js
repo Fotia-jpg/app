@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import LottieView from 'lottie-react-native';
 
-class homepage extends React.Component {
+class Homepage extends React.Component {
   static navigationOptions = {
     title: 'Scan',
     headerShown: false,
@@ -35,4 +35,4 @@ class homepage extends React.Component {
     );
   }
 }
-export default homepage;
+export default Homepage;

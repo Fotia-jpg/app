@@ -5,8 +5,12 @@ import Login from './src/screens/Login';
 import Register from './src/screens/Register';
 import Scan from './src/screens/Scan';
 import Preview from './src/screens/Preview';
+import Homepage from './src/screens/Homepage';
 
 const Project = createStackNavigator({
+  Homepage: {
+    screen: Homepage,
+  },
   Login: {
     screen: Login,
   },

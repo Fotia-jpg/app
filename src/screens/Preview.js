@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {View, Image, Alert, TouchableOpacity} from 'react-native';
 import Share from 'react-native-share';
-import style from '../styles/style';
+//import style from '../styles/style';
+import style from '../styles/previewStyles';
 
 import files from '../assets/base64Files';
 
@@ -27,8 +28,28 @@ class Preview extends React.Component {
     };
 
     return (
-      <View>
-        <View style={style.clickContainer}>
+      <View style={style.pageContainer}>
+        <View style={style.settingsContainer}>
+          <View style={style.settingsContainer}>
+            <TouchableOpacity>
+              <Image
+                style={style.settingsIcon}
+                source={require('../assets/ellipsis.png')}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View style={style.previewContainer}>
+          <TouchableOpacity>
+            <Image
+              style={style.previewImg}
+              source={require('../assets/placeholder.jpg')}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View style={style.clicksContainer}>
           <View style={style.dwlContainer}>
             <TouchableOpacity
               onPress={() => {
@@ -37,15 +58,6 @@ class Preview extends React.Component {
               <Image
                 style={style.dwlIcon}
                 source={require('../assets/direct-download.png')}
-              />
-            </TouchableOpacity>
-          </View>
-
-          <View style={style.previewContainer}>
-            <TouchableOpacity>
-              <Image
-                style={style.previewImg}
-                source={require('../assets/placeholder.jpg')}
               />
             </TouchableOpacity>
           </View>
