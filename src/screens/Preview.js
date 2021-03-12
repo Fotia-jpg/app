@@ -1,7 +1,13 @@
-import React, {Component} from 'react';
-import {View, Image, Alert, TouchableOpacity} from 'react-native';
+import React, {Component, useState} from 'react';
+import {View, Image, Alert, Text, Switch, TouchableOpacity} from 'react-native';
+// import {
+//   Menu,
+//   MenuProvider,
+//   MenuOptions,
+//   MenuOption,
+//   MenuTrigger,
+// } from 'react-native-popup-menu';
 import Share from 'react-native-share';
-//import style from '../styles/style';
 import style from '../styles/previewStyles';
 
 import files from '../assets/base64Files';
@@ -11,10 +17,11 @@ class Preview extends React.Component {
     title: 'Preview',
     headerShown: false,
   };
+
   render() {
     const CustomShare = async () => {
       const shareOptions = {
-        message: 'placeholder message',
+        message: 'Ma photo géniale',
         url: files.image,
       };
 
@@ -26,7 +33,6 @@ class Preview extends React.Component {
         console.log('Error');
       }
     };
-
     return (
       <View style={style.pageContainer}>
         <View style={style.settingsContainer}>

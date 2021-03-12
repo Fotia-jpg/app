@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
 
   settingsContainer: {
-    //backgroundColor: 'purple',
+    //backgroundColor: 'pink',
     width: '100%',
     flexDirection: 'row-reverse',
   },
@@ -63,5 +63,16 @@ export default StyleSheet.create({
     height: 50,
     width: 50,
     margin: 25,
+  },
+
+  temp: {
+    //backgroundColor: 'yellow',
+    height: 15,
+    width: 15,
+    margin: 2,
+  },
+
+  tempCont: {
+    flexDirection: 'row',
   },
 });
