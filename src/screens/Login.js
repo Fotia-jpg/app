@@ -35,6 +35,7 @@ class Login extends React.Component {
             <Input
               onChangeText={(text) => this.setState({pass: text})}
               placeholder="password"
+              secureTextEntry={true}
               leftIcon={<Icon name="lock" size={20} color="black" />}
             />
           </View>

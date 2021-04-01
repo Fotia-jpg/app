@@ -1,5 +1,8 @@
-import React, {Component, useState} from 'react';
-import {View, Image, Alert, Text, Switch, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {DarkTheme} from '@react-navigation/native';
+
+import {View, Image, Alert, TouchableOpacity, Dimensions} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 // import {
 //   Menu,
 //   MenuProvider,
@@ -9,8 +12,11 @@ import {View, Image, Alert, Text, Switch, TouchableOpacity} from 'react-native';
 // } from 'react-native-popup-menu';
 import Share from 'react-native-share';
 import style from '../styles/previewStyles';
-
 import files from '../assets/base64Files';
+import {useTheme} from 'react-navigation';
+
+const SCREEN_HEIGHT = Dimensions.get('window').height;
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class Preview extends React.Component {
   static navigationOptions = {
@@ -37,10 +43,14 @@ class Preview extends React.Component {
       <View style={style.pageContainer}>
         <View style={style.settingsContainer}>
           <View style={style.settingsContainer}>
-            <TouchableOpacity>
-              <Image
+            <TouchableOpacity
+              onPress={() => {
+                useTheme(DarkTheme);
+              }}>
+              <Icon
                 style={style.settingsIcon}
-                source={require('../assets/ellipsis.png')}
+                name="ellipsis-vertical"
+                size={SCREEN_WIDTH * 0.1}
               />
             </TouchableOpacity>
           </View>
@@ -61,18 +71,20 @@ class Preview extends React.Component {
               onPress={() => {
                 Alert.alert('', 'Download done !');
               }}>
-              <Image
+              <Icon
                 style={style.dwlIcon}
-                source={require('../assets/direct-download.png')}
+                name="ios-download-outline"
+                size={SCREEN_WIDTH * 0.15}
               />
             </TouchableOpacity>
           </View>
 
           <View style={style.shareContainer}>
             <TouchableOpacity onPress={CustomShare}>
-              <Image
+              <Icon
                 style={style.shareIcon}
-                source={require('../assets/share.png')}
+                name="ios-share-social-sharp"
+                size={SCREEN_WIDTH * 0.15}
               />
             </TouchableOpacity>
           </View>

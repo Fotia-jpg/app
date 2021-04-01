@@ -1,14 +1,10 @@
 import * as React from 'react';
-import style from '../styles/style';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Button,
-  TouchableOpacity,
-  requireNativeComponent,
-} from 'react-native';
+import {View, Dimensions, Button, Text, Linking} from 'react-native';
+import style from '../styles/scannerStyles';
+import * as Animatable from 'react-native-animatable';
 import QRCodeScanner from 'react-native-qrcode-scanner';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default class Scan extends React.Component {
   static navigationOptions = {
@@ -16,30 +12,81 @@ export default class Scan extends React.Component {
     headerShown: false,
   };
 
+  makeSlideOutTranslation(translationType, fromValue) {
+    return {
+      from: {
+        [translationType]: SCREEN_WIDTH * -0.18,
+      },
+      to: {
+        [translationType]: fromValue,
+      },
+    };
+  }
+
+  onSuccess = (e) => {
+    Linking.openURL(e.data).catch(
+      (err) => console.error('An error occured', err),
+      this.props.navigation.navigate('Preview'),
+    );
+  };
+
   render() {
     return (
-      <View style={style.container}>
-        {/*<QRCodeScanner*/}
-        {/*  onRead={this.onSuccess}*/}
-        {/*  flashMode={QRCodeScanner.Constants.FlashMode.torch}*/}
-        {/*  topContent={*/}
-        {/*    <Text>*/}
-        {/*      Go to <Text>wikipedia.org/wiki/QR_code</Text> on your computer and*/}
-        {/*      scan the QR code.*/}
-        {/*    </Text>*/}
-        {/*  }*/}
-        {/*  bottomContent={*/}
-        {/*    <TouchableOpacity>*/}
-        {/*      <Text>OK. Got it!</Text>*/}
-        {/*    </TouchableOpacity>*/}
-        {/*  }*/}
-        {/*/>*/}
-
+      <View style={style.pageContainer}>
         <View style={style.button}>
           <Button
             title="SCAN CODE"
             onPress={() => this.props.navigation.navigate('Preview')}
           />
+
+          <View style={style.scannerContainer}>
+            <QRCodeScanner
+              cameraStyle={{height: '100%', width: '100%'}}
+              showMarker={true}
+              onRead={this.onSuccess.bind(this)}
+              customMarker={
+                <View style={style.rectangleContainer}>
+                  <View style={style.topOverlay}>
+                    <Text style={{fontSize: 30, color: 'white'}}>
+                      QR SCANNER
+                    </Text>
+                  </View>
+
+                  <View style={{flexDirection: 'row'}}>
+                    <View style={style.leftAndRightOverlay} />
+
+                    <View style={style.rectangle}>
+                      {/*<View style={style.scanIcon}>*/}
+                      {/*  <Icon*/}
+                      {/*    name="scan"*/}
+                      {/*    size={SCREEN_WIDTH * 0.73}*/}
+                      {/*    color={iconScanColor}*/}
+                      {/*  />*/}
+                      {/*</View>*/}
+
+                      <View style={style.scanBarContainer}>
+                        <Animatable.View
+                          style={style.scanBar}
+                          direction="alternate-reverse"
+                          iterationCount="infinite"
+                          duration={1800}
+                          easing="linear"
+                          animation={this.makeSlideOutTranslation(
+                            'translateY',
+                            SCREEN_WIDTH * 0.2,
+                          )}
+                        />
+                      </View>
+                    </View>
+
+                    <View style={style.leftAndRightOverlay} />
+                  </View>
+
+                  <View style={style.bottomOverlay} />
+                </View>
+              }
+            />
+          </View>
         </View>
       </View>
     );

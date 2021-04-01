@@ -10,10 +10,19 @@ class Register extends React.Component {
     title: 'Register',
     headerShown: false,
   };
+
   constructor(props) {
     super(props);
     this.state = {showAlert: false};
   }
+
+  CheckPass = () => {
+    if (this.state.pass !== this.state.ConfPass) {
+      this.showAlert();
+    } else {
+      this.props.navigation.navigate('Scan');
+    }
+  };
 
   showAlert = () => {
     this.setState({
@@ -42,6 +51,7 @@ class Register extends React.Component {
           <View style={style.input}>
             <Input
               placeholder="password"
+              secureTextEntry={true}
               onChangeText={(text) => this.setState({pass: text})}
               leftIcon={<Icon name="lock" size={20} color="black" />}
             />
@@ -50,6 +60,7 @@ class Register extends React.Component {
           <View style={style.input}>
             <Input
               placeholder="confirm password"
+              secureTextEntry={true}
               onChangeText={(text) => this.setState({ConfPass: text})}
               leftIcon={<Icon name="lock" size={20} color="black" />}
             />
@@ -59,7 +70,7 @@ class Register extends React.Component {
             <View style={style.button}>
               <Button
                 //onPress={() => checkPass()}
-                onPress={() => this.props.navigation.navigate('Scan')}
+                onPress={() => this.CheckPass()}
                 title="        Login        "
                 type="solid"
                 raised

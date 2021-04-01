@@ -40,9 +40,7 @@ export default StyleSheet.create({
 
   settingsIcon: {
     //backgroundColor: 'pink',
-    opacity: 0.65,
-    height: 30,
-    width: 30,
+    //opacity: 0.65,
     margin: 20,
   },
 
@@ -53,16 +51,12 @@ export default StyleSheet.create({
 
   dwlIcon: {
     //backgroundColor: 'grey',
-    height: 50,
-    width: 50,
-    margin: 25,
+    margin: 20,
   },
 
   shareIcon: {
     //backgroundColor: 'yellow',
-    height: 50,
-    width: 50,
-    margin: 25,
+    margin: 20,
   },
 
   temp: {
