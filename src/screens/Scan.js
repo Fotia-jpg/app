@@ -5,6 +5,7 @@ import * as Animatable from 'react-native-animatable';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
+const ImgURL = 'http://172.16.24.229:8080/api/Users/fetchImage?page=1';
 
 export default class Scan extends React.Component {
   static navigationOptions = {
@@ -24,10 +25,12 @@ export default class Scan extends React.Component {
   }
 
   onSuccess = (e) => {
-    Linking.openURL(e.data).catch(
-      (err) => console.error('An error occured', err),
-      this.props.navigation.navigate('Preview'),
-    );
+    this.props.navigation.navigate('Preview');
+    alert(e.data);
+    // Linking.openURL(e.data).catch(
+    //   (err) => console.error('An error occured', err),
+    //   this.props.navigation.navigate('Preview'),
+    // );
   };
 
   render() {

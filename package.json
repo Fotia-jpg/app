@@ -23,6 +23,7 @@
     "create-app-container": "^0.1.3",
     "eject": "0.0.4",
     "expo-barcode-scanner": "^10.0.0",
+    "fetch-base64": "^2.1.2",
     "lottie-react-native": "^3.5.0",
     "prop-types": "^15.7.2",
     "react": "16.13.1",

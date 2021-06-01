@@ -1,6 +1,4 @@
 import React from 'react';
-import {DarkTheme} from '@react-navigation/native';
-
 import {View, Image, Alert, TouchableOpacity, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 // import {
@@ -13,8 +11,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Share from 'react-native-share';
 import style from '../styles/previewStyles';
 import files from '../assets/base64Files';
-import {useTheme} from 'react-navigation';
+// import ImgURL from 'Scan.js';
 
+// const fetch = require('fetch-base64');
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -23,6 +22,30 @@ class Preview extends React.Component {
     title: 'Preview',
     headerShown: false,
   };
+
+  state = {
+    ImageID: '',
+    ImageData: '',
+  };
+
+  FetchImage() {
+    return fetch('http://172.16.24.229:8080/api/Users/fetchImage?page=1')
+      .then((response) => response.json())
+      .then((json) => {
+        console.log('FETCH OK');
+        this.setState({
+          ImageData: json.file,
+        });
+        return json.file;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  componentDidMount() {
+    this.FetchImage();
+  }
 
   render() {
     const CustomShare = async () => {
@@ -43,10 +66,7 @@ class Preview extends React.Component {
       <View style={style.pageContainer}>
         <View style={style.settingsContainer}>
           <View style={style.settingsContainer}>
-            <TouchableOpacity
-              onPress={() => {
-                useTheme(DarkTheme);
-              }}>
+            <TouchableOpacity>
               <Icon
                 style={style.settingsIcon}
                 name="ellipsis-vertical"
@@ -60,7 +80,8 @@ class Preview extends React.Component {
           <TouchableOpacity>
             <Image
               style={style.previewImg}
-              source={require('../assets/placeholder.jpg')}
+              source={{uri: `data:image/jpg;base64,${this.state.ImageData}`}}
+              //source={require('../assets/landscape2.jpg')}
             />
           </TouchableOpacity>
         </View>

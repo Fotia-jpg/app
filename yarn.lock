@@ -4573,6 +4573,13 @@
     "setimmediate" "^1.0.5"
     "ua-parser-js" "^0.7.18"
 
+"fetch-base64@^2.1.2":
+  "integrity" "sha512-APL3vK1yYXUZ5spJFmojP/xXepjpsJUy/4oCijsvOlHBm9lEJtqOHgFJD8AMP/Rlr/1DlGxLc5InA0SqFf05zA=="
+  "resolved" "https://registry.npmjs.org/fetch-base64/-/fetch-base64-2.1.2.tgz"
+  "version" "2.1.2"
+  dependencies:
+    "mime-types" "^2.1.17"
+
 "figures@^2.0.0":
   "integrity" "sha1-OrGi0qYsi/tDGgyUy3l6L84nyWI="
   "resolved" "https://registry.npmjs.org/figures/-/figures-2.0.0.tgz"
@@ -7019,7 +7026,7 @@
   "resolved" "https://registry.npmjs.org/mime-db/-/mime-db-1.23.0.tgz"
   "version" "1.23.0"
 
-"mime-types@^2.1.12", "mime-types@~2.1.19", "mime-types@~2.1.24":
+"mime-types@^2.1.12", "mime-types@^2.1.17", "mime-types@~2.1.19", "mime-types@~2.1.24":
   "integrity" "sha512-0TO2yJ5YHYr7M2zzT7gDU1tbwHxEUWBCLt0lscSNpcdAfFyJOVEpRYNS7EXVcTLNj/25QO8gulHC5JtTzSE2UQ=="
   "resolved" "https://registry.npmjs.org/mime-types/-/mime-types-2.1.28.tgz"
   "version" "2.1.28"
